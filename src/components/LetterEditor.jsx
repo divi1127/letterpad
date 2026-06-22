@@ -131,29 +131,57 @@ const LetterEditor = ({ data, onChange }) => {
         />
       </div>
 
+      {/* Heading */}
+      <div>
+        <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Heading</label>
+        <div className="flex gap-2">
+          <input
+            type="text"
+            placeholder="e.g. Sub: Application for Leave"
+            value={data.heading}
+            onChange={(e) => handle("heading", e.target.value)}
+            className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A4F43]"
+          />
+          <select
+            value={data.headingSize || "18"}
+            onChange={(e) => handle("headingSize", e.target.value)}
+            className="w-20 border border-gray-200 rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-[#0A4F43]"
+          >
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="22">22</option>
+            <option value="24">24</option>
+          </select>
+        </div>
+      </div>
+
       {/* Body */}
       <div>
         <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Letter Body</label>
-        <textarea
-          rows={8}
-          placeholder="Type your letter content here..."
-          value={data.body}
-          onChange={(e) => handle("body", e.target.value)}
-          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A4F43] resize-none"
-        />
+        <div className="flex gap-2 mb-2">
+          <textarea
+            rows={8}
+            placeholder="Type your letter content here..."
+            value={data.body}
+            onChange={(e) => handle("body", e.target.value)}
+            className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A4F43] resize-none"
+          />
+          <select
+            value={data.bodySize || "14"}
+            onChange={(e) => handle("bodySize", e.target.value)}
+            className="w-20 self-start border border-gray-200 rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-[#0A4F43]"
+          >
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+          </select>
+        </div>
       </div>
 
-      {/* Closing */}
-      <div>
-        <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Closing</label>
-        <input
-          type="text"
-          placeholder="Yours faithfully / Regards"
-          value={data.closing}
-          onChange={(e) => handle("closing", e.target.value)}
-          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A4F43]"
-        />
-      </div>
 
       {/* Signatory */}
       <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-3">

@@ -9,9 +9,11 @@ const TemplateTwo = ({ data = {} }) => {
     toCompany = "",
     toAddress = "",
     subject = "",
+    heading = "",
+    headingSize = "18",
     salutation = "",
     body = "",
-    closing = "Yours faithfully,",
+    bodySize = "14",
     signatoryName = "",
     signatoryTitle = "",
     letterType = "General Letter",
@@ -24,7 +26,7 @@ const TemplateTwo = ({ data = {} }) => {
   const bodyParagraphs = body.split("\n").filter((p) => p.trim() !== "");
 
   return (
-    <div className="w-full max-w-[800px] min-h-[1131px] bg-white shadow-2xl relative overflow-hidden flex flex-col mx-auto">
+    <div className="w-full max-w-[800px] min-h-[1131px] bg-white shadow-2xl relative overflow-hidden flex flex-col mx-auto font-['Times_New_Roman']">
 
       {/* HEADER */}
       <div className="w-full pt-12 flex items-center">
@@ -41,7 +43,7 @@ const TemplateTwo = ({ data = {} }) => {
 
       {/* Company Details Top */}
       <div className="px-12 mt-4">
-        <div className="text-[9.5px] text-gray-600 flex flex-wrap gap-x-6 gap-y-1.5 font-medium">
+        <div className="text-[9.5px] text-gray-600 flex items-center justify-between font-medium">
           <div className="flex items-center gap-1.5">
             <svg className="w-3 h-3 text-[#0A4F43] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
             <span>78679 08377</span>
@@ -60,17 +62,17 @@ const TemplateTwo = ({ data = {} }) => {
       {/* BODY */}
       <div className="px-12 py-6 flex-grow flex flex-col z-10">
 
-        {/* Ref & Date */}
-        <div className="flex justify-between text-[11px] text-gray-600 mb-5">
-          {refNo && <span><span className="font-bold">Ref:</span> {refNo}</span>}
-          {formattedDate && <span><span className="font-bold">Date:</span> {formattedDate}</span>}
-        </div>
-
+        {/* Date */}
+        {formattedDate && (
+          <div className="text-right text-[14px] text-gray-600 mb-5">
+            <span className="font-bold">Date:</span> {formattedDate}
+          </div>
+        )}
 
         {/* To */}
         {(toName || toCompany || toAddress) && (
-          <div className="mb-5 text-[11px] text-gray-700 leading-relaxed">
-            <p className="font-bold text-black text-[13px]">{toName}</p>
+          <div className="mb-5 text-[14px] text-gray-700 leading-relaxed">
+            <p className="font-bold text-black text-[16px]">{toName}</p>
             {toTitle && <p className="text-gray-500">{toTitle}</p>}
             {toCompany && <p>{toCompany}</p>}
             {toAddress && <p className="whitespace-pre-line">{toAddress}</p>}
@@ -80,30 +82,40 @@ const TemplateTwo = ({ data = {} }) => {
         {/* Subject */}
         {subject && (
           <div className="mb-5">
-            <p className="text-[11px] font-bold text-black underline underline-offset-2">
+            <p className="text-[14px] font-bold text-black underline underline-offset-2">
               Sub: {subject}
             </p>
           </div>
         )}
 
         {/* Salutation */}
-        {salutation && <p className="text-[11px] text-gray-700 mb-4">{salutation},</p>}
+        {salutation && <p className="text-[14px] text-gray-700 mb-4">{salutation},</p>}
 
-        {/* Body */}
-        <div className="text-[11px] text-gray-700 space-y-3 leading-relaxed flex-grow text-justify">
-          {bodyParagraphs.length > 0
-            ? bodyParagraphs.map((p, i) => <p key={i}>{p}</p>)
-            : <p className="text-gray-300 italic">Your letter content will appear here...</p>
-          }
+        <div className="flex-grow flex flex-col justify-center">
+          {/* Heading */}
+          {heading && (
+            <div className="mb-5">
+              <p className="font-bold text-black text-center" style={{ fontSize: `${headingSize}px` }}>
+                {heading}
+              </p>
+            </div>
+          )}
+
+          {/* Body */}
+          <div className="text-gray-700 space-y-3 leading-relaxed text-justify" style={{ fontSize: `${bodySize}px` }}>
+            {bodyParagraphs.length > 0
+              ? bodyParagraphs.map((p, i) => <p key={i}>{p}</p>)
+              : <p className="text-gray-300 italic">Your letter content will appear here...</p>
+            }
+          </div>
         </div>
 
-        {/* Closing & Signature */}
-        <div className="mt-10 pb-4">
-          {closing && <p className="text-[11px] text-gray-700 mb-8">{closing}</p>}
+        {/* Signature */}
+        <div className="pb-4">
           <div className="flex justify-end">
             <div className="flex flex-col items-center">
               <div className="w-48 border-t-2 border-black"></div>
-              <p className="text-[11px] mt-1.5 text-black font-bold">
+              <p className="text-[14px] mt-1.5 text-black font-bold">
                 {signatoryName || "Authorized Signatory"}
               </p>
               {signatoryTitle && <p className="text-[10px] text-gray-500">{signatoryTitle}</p>}

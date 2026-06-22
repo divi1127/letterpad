@@ -9,9 +9,9 @@ const TemplateOne = ({ data = {} }) => {
     toCompany = "",
     toAddress = "",
     subject = "",
+    heading = "",
     salutation = "",
     body = "",
-    closing = "Yours faithfully,",
     signatoryName = "",
     signatoryTitle = "",
     letterType = "General Letter",
@@ -24,7 +24,7 @@ const TemplateOne = ({ data = {} }) => {
   const bodyParagraphs = body.split("\n").filter((p) => p.trim() !== "");
 
   return (
-    <div className="w-full max-w-[800px] min-h-[1131px] bg-white shadow-2xl relative overflow-hidden flex flex-col mx-auto">
+    <div className="w-full max-w-[800px] min-h-[1131px] bg-white shadow-2xl relative overflow-hidden flex flex-col mx-auto font-['Times_New_Roman']">
 
       {/* TOP SHAPES & HEADER */}
       <div className="relative pt-12 px-12 pb-4">
@@ -62,7 +62,7 @@ const TemplateOne = ({ data = {} }) => {
       <div className="px-12 py-6 flex-grow flex flex-col z-10">
 
         {/* Ref & Date */}
-        <div className="flex justify-between text-[11px] text-gray-600 mb-5">
+        <div className="flex justify-between text-[14px] text-gray-600 mb-5">
           {refNo && <span><span className="font-bold">Ref:</span> {refNo}</span>}
           {formattedDate && <span><span className="font-bold">Date:</span> {formattedDate}</span>}
         </div>
@@ -70,8 +70,8 @@ const TemplateOne = ({ data = {} }) => {
 
         {/* To */}
         {(toName || toCompany || toAddress) && (
-          <div className="mb-5 text-[11px] text-gray-700 leading-relaxed">
-            <p className="font-bold text-black text-[13px]">{toName}</p>
+          <div className="mb-5 text-[14px] text-gray-700 leading-relaxed">
+            <p className="font-bold text-black text-[16px]">{toName}</p>
             {toTitle && <p className="text-gray-500">{toTitle}</p>}
             {toCompany && <p>{toCompany}</p>}
             {toAddress && <p className="whitespace-pre-line">{toAddress}</p>}
@@ -81,30 +81,38 @@ const TemplateOne = ({ data = {} }) => {
         {/* Subject */}
         {subject && (
           <div className="mb-5">
-            <p className="text-[11px] font-bold text-black underline underline-offset-2">
+            <p className="text-[14px] font-bold text-black underline underline-offset-2">
               Sub: {subject}
             </p>
           </div>
         )}
 
+        {/* Heading */}
+        {heading && (
+          <div className="mb-5">
+            <p className="text-[18px] font-bold text-black text-center">
+              {heading}
+            </p>
+          </div>
+        )}
+
         {/* Salutation */}
-        {salutation && <p className="text-[11px] text-gray-700 mb-4">{salutation},</p>}
+        {salutation && <p className="text-[14px] text-gray-700 mb-4">{salutation},</p>}
 
         {/* Body */}
-        <div className="text-[11px] text-gray-700 space-y-3 leading-relaxed flex-grow text-justify">
+        <div className="text-[14px] text-gray-700 space-y-3 leading-relaxed flex-grow text-justify">
           {bodyParagraphs.length > 0
             ? bodyParagraphs.map((p, i) => <p key={i}>{p}</p>)
             : <p className="text-gray-300 italic">Your letter content will appear here...</p>
           }
         </div>
 
-        {/* Closing & Signature */}
+        {/* Signature */}
         <div className="mt-10 pb-4">
-          {closing && <p className="text-[11px] text-gray-700 mb-8">{closing}</p>}
           <div className="flex justify-end">
             <div className="flex flex-col items-center">
               <div className="w-48 border-t-2 border-black"></div>
-              <p className="text-[11px] mt-1.5 text-black font-bold">
+              <p className="text-[14px] mt-1.5 text-black font-bold">
                 {signatoryName || "Authorized Signatory"}
               </p>
               {signatoryTitle && <p className="text-[10px] text-gray-500">{signatoryTitle}</p>}
