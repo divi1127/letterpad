@@ -5,6 +5,12 @@ import LetterEditor from "./components/LetterEditor";
 
 const today = new Date().toISOString().split("T")[0];
 
+const certBody = `This is to certify that Mr./Ms. __________, a __________ student of _______________, has successfully completed an Internship/Training in __________ at JOD TECH \u2013 IT Solutions, from ____ to ____.
+
+During the tenure with our organization, the candidate demonstrated dedication, sincerity, and a willingness to learn. Their performance, character, and conduct were found to be satisfactory.
+
+We wish him/her every success in future assignments.`;
+
 const defaultData = {
   template: 1,
   letterType: "General Letter",
@@ -15,9 +21,9 @@ const defaultData = {
   toCompany: "",
   toAddress: "",
   subject: "",
+  heading: "TO WHOMSOEVER IT MAY CONCERN",
   salutation: "Dear Sir / Madam",
-  body: "",
-  closing: "Yours faithfully,",
+  body: certBody,
   signatoryName: "",
   signatoryTitle: "",
 };
