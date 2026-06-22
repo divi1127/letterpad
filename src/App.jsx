@@ -64,46 +64,33 @@ function App() {
       <header className="no-print bg-[#0A4F43] text-white shadow-lg">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
           <div className="flex items-center gap-3">
-            <img src="/jod.jpeg" alt="logo" className="h-8 w-8 rounded object-contain bg-white p-0.5" />
+            <div className="bg-white p-1 rounded-lg shadow-sm">
+              <img src="/jod.jpeg" alt="logo" className="h-7 w-7 object-contain" />
+            </div>
             <div>
               <p className="font-serif font-bold text-lg leading-none tracking-wide">JOD TECH</p>
-              <p className="text-[9px] text-green-200 tracking-widest uppercase">Letterpad</p>
+              <p className="text-[9px] text-green-200 tracking-widest uppercase mt-0.5">Professional Letterpad</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
               onClick={handlePrint}
-              className="hidden sm:flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all"
+              className="hidden sm:flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl px-4 py-1.5 text-xs font-bold transition-all hover:scale-105 active:scale-95"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
               Print
             </button>
             <button
               onClick={handleDownloadPDF}
-              className="flex items-center gap-2 bg-white text-[#0A4F43] rounded-lg px-3 py-1.5 text-xs font-bold transition-all hover:bg-green-50 shadow"
+              className="flex items-center gap-2 bg-white text-[#0A4F43] rounded-xl px-4 py-1.5 text-xs font-bold transition-all hover:bg-green-50 shadow-md hover:scale-105 active:scale-95"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-              PDF
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Download PDF
             </button>
           </div>
         </div>
       </header>
 
-      {/* MOBILE TAB BAR */}
-      <div className="no-print sm:hidden flex border-b border-gray-200 bg-white sticky top-0 z-10">
-        <button
-          onClick={() => setMobileView("edit")}
-          className={`flex-1 py-3 text-sm font-bold transition-all ${mobileView === "edit" ? "text-[#0A4F43] border-b-2 border-[#0A4F43]" : "text-gray-400"}`}
-        >
-          ✏️ Edit
-        </button>
-        <button
-          onClick={() => setMobileView("preview")}
-          className={`flex-1 py-3 text-sm font-bold transition-all ${mobileView === "preview" ? "text-[#0A4F43] border-b-2 border-[#0A4F43]" : "text-gray-400"}`}
-        >
-          👁 Preview
-        </button>
-      </div>
 
       {/* MAIN LAYOUT */}
       <div className="max-w-[1400px] mx-auto flex flex-col sm:flex-row gap-0 sm:gap-6 px-0 sm:px-6 py-0 sm:py-6 min-h-[calc(100vh-56px)]">
@@ -111,59 +98,54 @@ function App() {
         {/* LEFT — EDITOR */}
         <div
           className={`
-            no-print sm:w-[360px] sm:shrink-0 bg-white sm:rounded-2xl shadow-md sm:h-[calc(100vh-90px)] overflow-y-auto sm:sticky sm:top-6
+            no-print sm:w-[380px] sm:shrink-0 bg-white sm:rounded-2xl shadow-sm sm:h-[calc(100vh-100px)] overflow-y-auto sm:sticky sm:top-6
             ${mobileView === "edit" ? "block" : "hidden sm:block"}
           `}
         >
-          <div className="bg-[#0A4F43] px-5 py-3 sm:rounded-t-2xl">
-            <h2 className="text-white font-bold text-sm tracking-wide">✏️ Edit Letter</h2>
+          <div className="bg-[#0A4F43] px-5 py-4 sm:rounded-t-2xl flex items-center gap-2">
+            <svg className="w-4 h-4 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <h2 className="text-white font-bold text-sm tracking-wide">Editor</h2>
           </div>
           <LetterEditor data={data} onChange={setData} />
-
-          {/* Mobile Print/PDF Buttons */}
-          <div className="sm:hidden flex gap-3 px-5 pb-6">
-            <button onClick={handlePrint} className="flex-1 flex items-center justify-center gap-2 bg-gray-100 text-gray-700 rounded-lg py-2.5 text-sm font-bold">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-              Print
-            </button>
-            <button onClick={handleDownloadPDF} className="flex-1 flex items-center justify-center gap-2 bg-[#0A4F43] text-white rounded-lg py-2.5 text-sm font-bold">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-              Download PDF
-            </button>
-          </div>
+          <div className="h-20 sm:hidden"></div> {/* Spacer for bottom nav */}
         </div>
 
         {/* RIGHT — PREVIEW */}
         <div
           className={`
-            flex-1 overflow-auto pb-8
+            flex-1 overflow-auto pb-24 sm:pb-8
             ${mobileView === "preview" ? "block" : "hidden sm:block"}
           `}
         >
-          <div className="bg-white sm:rounded-2xl shadow-md overflow-hidden sm:mb-0 mb-0">
-            <div className="no-print bg-gray-800 px-5 py-3 sm:rounded-t-2xl flex items-center justify-between">
-              <h2 className="text-white font-bold text-sm tracking-wide">👁 Live Preview</h2>
-              <div className="flex gap-1">
-                <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+          <div className="bg-white sm:rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+            <div className="no-print bg-gray-50 border-b border-gray-100 px-5 py-3 sm:rounded-t-2xl flex items-center justify-between">
+              <div className="flex items-center gap-2 text-gray-700">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <h2 className="font-bold text-sm tracking-wide uppercase text-[10px]">Live Preview</h2>
+              </div>
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-300"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-300"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-green-300"></div>
               </div>
             </div>
             <div
               ref={previewContainerRef}
-              className="no-print-bg bg-gray-200 p-4 sm:p-8 overflow-hidden"
+              className="no-print-bg bg-[#eaefee] p-4 sm:p-10 overflow-hidden flex justify-center items-start min-h-[600px]"
             >
-              {/* Scaled letter preview — fills the container on any screen size */}
+              {/* Scaled letter preview */}
               <div
+                className="shadow-2xl"
                 style={{
                   width: `${800 * previewScale}px`,
                   height: `${1131 * previewScale}px`,
                   position: "relative",
-                  margin: "0 auto",
+                  backgroundColor: "white"
                 }}
               >
                 <div
                   ref={printRef}
+                  id="letter-preview"
                   style={{
                     transform: `scale(${previewScale})`,
                     transformOrigin: "top left",
@@ -181,6 +163,45 @@ function App() {
         </div>
 
       </div>
+
+      {/* MOBILE BOTTOM NAV */}
+      <nav className="no-print sm:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] h-16 glass-nav rounded-2xl shadow-2xl z-[100] flex items-center justify-around px-2 border border-white/50">
+        <button
+          onClick={() => setMobileView("edit")}
+          className={`flex flex-col items-center gap-1 px-4 py-2 transition-all ${mobileView === "edit" ? "text-[#0A4F43]" : "text-gray-400"}`}
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={mobileView === "edit" ? "2.5" : "2"} strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          <span className="text-[10px] font-bold uppercase tracking-tighter">Edit</span>
+          {mobileView === "edit" && <div className="w-1 h-1 bg-[#0A4F43] rounded-full"></div>}
+        </button>
+
+        <button
+          onClick={() => setMobileView("preview")}
+          className={`flex flex-col items-center gap-1 px-4 py-2 transition-all ${mobileView === "preview" ? "text-[#0A4F43]" : "text-gray-400"}`}
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={mobileView === "preview" ? "2.5" : "2"} strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span className="text-[10px] font-bold uppercase tracking-tighter">Preview</span>
+          {mobileView === "preview" && <div className="w-1 h-1 bg-[#0A4F43] rounded-full"></div>}
+        </button>
+
+        <div className="w-px h-8 bg-gray-200 mx-1"></div>
+
+        <button
+          onClick={handlePrint}
+          className="flex flex-col items-center gap-1 px-4 py-2 text-gray-600 active:scale-90 transition-transform"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+          <span className="text-[10px] font-bold uppercase tracking-tighter">Print</span>
+        </button>
+
+        <button
+          onClick={handleDownloadPDF}
+          className="flex flex-col items-center gap-1 px-4 py-2 text-gray-600 active:scale-90 transition-transform"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span className="text-[10px] font-bold uppercase tracking-tighter">PDF</span>
+        </button>
+      </nav>
     </div>
   );
 }

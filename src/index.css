@@ -88,5 +88,33 @@ body {
     border-radius: 0 !important;
     overflow: hidden !important;
     background: white !important;
+    transform: none !important; /* Force reset of preview scaling */
   }
 }
+
+/* ===================== UI ENHANCEMENTS ===================== */
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-item-active {
+  color: #0A4F43;
+  position: relative;
+}
+
+.nav-item-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #0A4F43;
+}
+

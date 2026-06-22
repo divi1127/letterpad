@@ -24,7 +24,7 @@ const TemplateOne = ({ data = {} }) => {
   const bodyParagraphs = body.split("\n").filter((p) => p.trim() !== "");
 
   return (
-    <div id="letter-preview" className="w-full max-w-[800px] min-h-[1131px] bg-white shadow-2xl relative overflow-hidden flex flex-col mx-auto">
+    <div className="w-full max-w-[800px] min-h-[1131px] bg-white shadow-2xl relative overflow-hidden flex flex-col mx-auto">
 
       {/* TOP SHAPES & HEADER */}
       <div className="relative pt-12 px-12 pb-4">
@@ -42,17 +42,13 @@ const TemplateOne = ({ data = {} }) => {
           </div>
           {/* Company Details */}
           <div className="mt-4 text-[9.5px] text-gray-600 flex flex-wrap gap-x-6 gap-y-1.5 font-medium">
-            <div className="flex items-start gap-1.5">
-              <svg className="w-3 h-3 text-[#0A4F43] mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-              <span>No 10, Chitharanjan Street, Chinna Chokkikulam, Madurai - 625002</span>
-            </div>
             <div className="flex items-center gap-1.5">
               <svg className="w-3 h-3 text-[#0A4F43] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
               <span>78679 08377</span>
             </div>
             <div className="flex items-center gap-1.5">
               <svg className="w-3 h-3 text-[#0A4F43] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              <span>jodtech11@gmail.com | jodtech.in</span>
+              <span>jodtech11@gmail.com | https://www.jodtech.in/</span>
             </div>
             <div className="flex items-center gap-1.5 font-bold text-black">
               <span>GSTIN: 33FAVPR3433JIZ5</span>
@@ -71,14 +67,6 @@ const TemplateOne = ({ data = {} }) => {
           {formattedDate && <span><span className="font-bold">Date:</span> {formattedDate}</span>}
         </div>
 
-        {/* Letter Type Badge */}
-        {letterType && (
-          <div className="mb-4">
-            <span className="bg-[#0A4F43] text-white text-[10px] font-bold px-3 py-1 rounded uppercase tracking-widest">
-              {letterType}
-            </span>
-          </div>
-        )}
 
         {/* To */}
         {(toName || toCompany || toAddress) && (
@@ -154,7 +142,7 @@ const TemplateOne = ({ data = {} }) => {
           </div>
           <div className="flex items-center justify-end gap-3">
             <div className="text-[9px] text-gray-600 font-medium leading-tight">
-              <p>jodtech11@gmail.com | https://jodtech.in</p>
+              <p>jodtech11@gmail.com | https://www.jodtech.in/</p>
             </div>
             <div className="w-7 h-7 bg-[#0A4F43] flex items-center justify-center text-white shrink-0">
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
