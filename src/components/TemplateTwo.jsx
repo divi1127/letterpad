@@ -91,23 +91,21 @@ const TemplateTwo = ({ data = {} }) => {
         {/* Salutation */}
         {salutation && <p className="text-[14px] text-gray-700 mb-4">{salutation},</p>}
 
-        <div className="flex-grow flex flex-col justify-center">
-          {/* Heading */}
-          {heading && (
-            <div className="mb-5">
-              <p className="font-bold text-black text-center" style={{ fontSize: `${headingSize}px` }}>
-                {heading}
-              </p>
-            </div>
-          )}
-
-          {/* Body */}
-          <div className="text-gray-700 space-y-3 leading-relaxed text-justify" style={{ fontSize: `${bodySize}px` }}>
-            {bodyParagraphs.length > 0
-              ? bodyParagraphs.map((p, i) => <p key={i}>{p}</p>)
-              : <p className="text-gray-300 italic">Your letter content will appear here...</p>
-            }
+        {/* Heading */}
+        {heading && (
+          <div className="mb-5">
+            <p className="font-bold text-black text-center" style={{ fontSize: `${headingSize}px` }}>
+              {heading}
+            </p>
           </div>
+        )}
+
+        {/* Body */}
+        <div className="flex-grow text-gray-700 space-y-3 leading-relaxed text-justify" style={{ fontSize: `${bodySize}px` }}>
+          {bodyParagraphs.length > 0
+            ? bodyParagraphs.map((p, i) => <p key={i}>{p}</p>)
+            : <p className="text-gray-300 italic">Your letter content will appear here...</p>
+          }
         </div>
 
         {/* Signature */}
