@@ -160,18 +160,38 @@ const LetterEditor = ({ data, onChange }) => {
       {/* Body */}
       <div>
         <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Letter Body</label>
-        <div className="flex gap-2 mb-2">
-          <textarea
-            rows={8}
-            placeholder="Type your letter content here..."
-            value={data.body}
-            onChange={(e) => handle("body", e.target.value)}
-            className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A4F43] resize-none"
-          />
+        <div className="flex gap-2 mb-1">
+          <div className="flex gap-1">
+            {[
+              { label: "B", wrap: "**", style: "font-bold" },
+              { label: "I", wrap: "_", style: "italic" },
+            ].map(({ label, wrap, style }) => (
+              <button
+                key={label}
+                type="button"
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  const ta = document.getElementById("body-textarea");
+                  const { selectionStart: s, selectionEnd: e2, value } = ta;
+                  if (s === e2) return;
+                  const selected = value.slice(s, e2);
+                  const newVal = value.slice(0, s) + wrap + selected + wrap + value.slice(e2);
+                  handle("body", newVal);
+                  requestAnimationFrame(() => {
+                    ta.focus();
+                    ta.setSelectionRange(s + wrap.length, e2 + wrap.length);
+                  });
+                }}
+                className={`w-7 h-7 border border-gray-300 rounded text-sm text-gray-700 hover:bg-gray-100 ${style}`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
           <select
             value={data.bodySize || "14"}
             onChange={(e) => handle("bodySize", e.target.value)}
-            className="w-20 self-start border border-gray-200 rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-[#0A4F43]"
+            className="ml-auto w-20 border border-gray-200 rounded-lg px-2 py-1 text-sm focus:outline-none focus:border-[#0A4F43]"
           >
             <option value="12">12</option>
             <option value="14">14</option>
@@ -180,6 +200,14 @@ const LetterEditor = ({ data, onChange }) => {
             <option value="20">20</option>
           </select>
         </div>
+        <textarea
+          id="body-textarea"
+          rows={8}
+          placeholder="Type your letter content here..."
+          value={data.body}
+          onChange={(e) => handle("body", e.target.value)}
+          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A4F43] resize-none"
+        />
       </div>
 
 
