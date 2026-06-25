@@ -66,6 +66,15 @@ const TemplateTwo = ({ data = {} }) => {
         <div className="h-[2px] w-full bg-[#0A4F43] mt-3 rounded-full"></div>
       </div>
 
+      {/* Watermark Background */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <img
+          src="/jod.jpeg"
+          alt=""
+          className="w-80 h-80 object-contain opacity-[0.08]"
+        />
+      </div>
+
       {/* BODY */}
       <div className="px-12 pt-[22px] pb-6 flex-grow flex flex-col z-10">
 
