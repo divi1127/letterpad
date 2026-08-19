@@ -1,6 +1,6 @@
 import React from "react";
 
-const LetterEditor = ({ data, onChange }) => {
+const LetterEditor = ({ data, onChange, onLetterTypeChange }) => {
   const handle = (field, value) => onChange({ ...data, [field]: value });
 
   return (
@@ -31,7 +31,7 @@ const LetterEditor = ({ data, onChange }) => {
         <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Letter Type</label>
         <select
           value={data.letterType}
-          onChange={(e) => handle("letterType", e.target.value)}
+          onChange={(e) => (onLetterTypeChange ? onLetterTypeChange(e.target.value) : handle("letterType", e.target.value))}
           className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A4F43]"
         >
           <option>General Letter</option>
@@ -41,6 +41,7 @@ const LetterEditor = ({ data, onChange }) => {
           <option>Invoice</option>
           <option>Offer Letter</option>
           <option>Experience Letter</option>
+          <option>Relieving Letter</option>
           <option>NOC Letter</option>
           <option>NDA Letter</option>
           <option>Work Order</option>

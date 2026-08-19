@@ -28,6 +28,39 @@ const defaultData = {
   signatoryTitle: "",
 };
 
+const experienceBody = `This is to certify that Mr./Ms. __________, has worked with us as __________ from ____ to ____ at JOD TECH \u2013 IT Solutions.
+
+During the course of employment, we found him/her to be sincere, hardworking, and dedicated to their work. He/She has handled his/her responsibilities with utmost professionalism and has contributed significantly to the growth of our organization.
+
+We found his/her character and conduct to be good during the period of employment. We wish him/her all the best for his/her future endeavors.`;
+
+const relievingBody = `This is to certify that Mr./Ms. __________, who was employed with JOD TECH \u2013 IT Solutions as __________, has been relieved from his/her duties on ____, upon submission of the due resignation.
+
+We found him/her to be sincere, hardworking, and committed to his/her responsibilities during his/her tenure with our organization. All his/her dues and pending obligations have been settled as per company policy.
+
+We wish him/her all the best for his/her future career.`;
+
+const letterPresets = {
+  "General Letter": {
+    subject: "",
+    heading: "TO WHOMSOEVER IT MAY CONCERN",
+    salutation: "Dear Sir / Madam",
+    body: certBody,
+  },
+  "Experience Letter": {
+    subject: "Experience Certificate",
+    heading: "TO WHOMSOEVER IT MAY CONCERN",
+    salutation: "Dear Sir / Madam",
+    body: experienceBody,
+  },
+  "Relieving Letter": {
+    subject: "Relieving Letter",
+    heading: "TO WHOMSOEVER IT MAY CONCERN",
+    salutation: "Dear Sir / Madam",
+    body: relievingBody,
+  },
+};
+
 function App() {
   const [data, setData] = useState(defaultData);
   const [mobileView, setMobileView] = useState("edit"); // "edit" | "preview"
@@ -52,6 +85,15 @@ function App() {
     if (previewContainerRef.current) ro.observe(previewContainerRef.current);
     return () => ro.disconnect();
   }, []);
+
+  const handleLetterTypeChange = (letterType) => {
+    const preset = letterPresets[letterType];
+    setData((prev) => ({
+      ...prev,
+      letterType,
+      ...(preset || {}),
+    }));
+  };
 
   const handlePrint = () => {
     window.print();
@@ -112,7 +154,7 @@ function App() {
             <svg className="w-4 h-4 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             <h2 className="text-white font-bold text-sm tracking-wide">Editor</h2>
           </div>
-          <LetterEditor data={data} onChange={setData} />
+          <LetterEditor data={data} onChange={setData} onLetterTypeChange={handleLetterTypeChange} />
           <div className="h-20 sm:hidden"></div> {/* Spacer for bottom nav */}
         </div>
 
