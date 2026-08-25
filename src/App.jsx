@@ -59,6 +59,12 @@ const letterPresets = {
     salutation: "Dear Sir / Madam",
     body: relievingBody,
   },
+  "Offer Letter": {
+    subject: "Offer Letter",
+    heading: "TO WHOMSOEVER IT MAY CONCERN",
+    salutation: "Dear Sir / Madam",
+    body: certBody,
+  },
 };
 
 function App() {

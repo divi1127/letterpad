@@ -87,7 +87,7 @@ const TemplateOne = ({ data = {} }) => {
 
         {/* To */}
         {(toName || toCompany || toAddress) && (
-          <div className="mb-5 text-[14px] text-gray-700 leading-relaxed">
+          <div className="mb-5 text-[14px] text-black leading-relaxed">
             <p className="font-bold text-black text-[16px]">{toName}</p>
             {toTitle && <p className="text-gray-500">{toTitle}</p>}
             {toCompany && <p>{toCompany}</p>}
@@ -105,7 +105,7 @@ const TemplateOne = ({ data = {} }) => {
         )}
 
         {/* Salutation */}
-        {salutation && <p className="text-[14px] text-gray-700 mb-4">{salutation},</p>}
+        {salutation && <p className="text-[14px] text-black mb-4">{salutation},</p>}
 
         <div className="flex-grow flex flex-col justify-center">
           {/* Heading */}
@@ -118,7 +118,7 @@ const TemplateOne = ({ data = {} }) => {
           )}
 
           {/* Body */}
-          <div className="text-gray-700 space-y-3 leading-relaxed text-justify" style={{ fontSize: `${bodySize}px` }}>
+          <div className="text-black space-y-3 leading-relaxed text-justify" style={{ fontSize: `${bodySize}px` }}>
             {bodyParagraphs.length > 0
               ? bodyParagraphs.map((p, i) => <p key={i}>{renderBody(p)}</p>)
               : <p className="text-gray-300 italic">Your letter content will appear here...</p>
@@ -128,7 +128,16 @@ const TemplateOne = ({ data = {} }) => {
 
         {/* Signature */}
         <div className="mt-10 pb-4">
-          <div className="flex justify-end">
+          <div className="flex justify-between">
+            {letterType === "Offer Letter" && (
+              <div className="flex flex-col items-center">
+                <div className="w-48 border-t-2 border-black"></div>
+                <p className="text-[14px] mt-1.5 text-black font-bold">
+                  Acceptance Signature
+                </p>
+                <p className="text-[10px] text-gray-500">Candidate Name</p>
+              </div>
+            )}
             <div className="flex flex-col items-center">
               <div className="w-48 border-t-2 border-black"></div>
               <p className="text-[14px] mt-1.5 text-black font-bold">
